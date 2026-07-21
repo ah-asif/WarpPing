@@ -1,0 +1,13 @@
+# Build artifacts
+/bin/
+/dist/
+warpping
+
+# Go
+*.test
+*.out
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
