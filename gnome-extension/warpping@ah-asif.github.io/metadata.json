@@ -1,7 +1,8 @@
 {
-    "uuid": "warpping@YOUR_GITHUB_USERNAME.github.io",
+    "uuid": "warpping@ah-asif.github.io",
     "name": "warpping",
     "description": "Shows live download/upload speed and ping in the top bar. Click the indicator to test ping against any domain or IP address.",
     "shell-version": [ "45", "46", "47", "48" ],
-    "url": "https://github.com/YOUR_GITHUB_USERNAME/warpping"
+    "url": "https://github.com/ah-asif/warpping"
+    
 }
