@@ -124,6 +124,71 @@ warpping/
 └── README.md
 ```
 
+## Publishing to Linux package managers
+
+Beyond raw GitHub Release binaries, this repo is set up for a few common
+Linux distribution channels:
+
+| Channel | Status | Where |
+|---|---|---|
+| `.deb` / `.rpm` / `.apk` | Automatic on every tag | Attached to the GitHub Release via `nfpms` in `.goreleaser.yaml` |
+| Homebrew tap (Linuxbrew) | Automatic, needs one-time setup | `homebrew_casks` in `.goreleaser.yaml` |
+| AUR (Arch Linux) | Manual, template provided | `packaging/aur/PKGBUILD` |
+| Snap | Manual, template provided | `packaging/snap/snapcraft.yaml` |
+
+### `.deb` / `.rpm` / `.apk`
+
+Already wired up — the `nfpms` section in `.goreleaser.yaml` builds these
+automatically alongside the `.tar.gz` archives whenever you push a tag.
+Just update the placeholder `homepage` and `maintainer` fields first.
+
+Users then install with, e.g.:
+
+```bash
+curl -LO https://github.com/YOU/warpping/releases/download/v1.0.0/warpping_1.0.0_linux_amd64.deb
+sudo dpkg -i warpping_1.0.0_linux_amd64.deb
+```
+
+### Homebrew tap
+
+1. Create a new GitHub repo named `homebrew-tap` under your account.
+2. Create a GitHub Personal Access Token with `contents:write` scope on
+   that repo, and add it as a repository secret named
+   `HOMEBREW_TAP_TOKEN` (Settings → Secrets and variables → Actions) on
+   **this** repo.
+3. Update the `owner` field under `homebrew_casks` in `.goreleaser.yaml`.
+4. Push a tag — GoReleaser will push a Cask file into your tap repo.
+
+Users then run:
+
+```bash
+brew tap YOU/tap
+brew install --cask warpping
+```
+
+### AUR (Arch Linux)
+
+`packaging/aur/PKGBUILD` is a starting template. Publishing to the AUR is
+a manual, maintainer-driven process (there's no GitHub Actions bridge to
+it) — follow the comments at the top of that file to create your AUR
+account and push the package.
+
+### Snap
+
+`packaging/snap/snapcraft.yaml` is a starting template using the `go`
+plugin and `core24` base. Build and test locally with:
+
+```bash
+cd packaging/snap
+snapcraft
+sudo snap install --dangerous ./warpping_*.snap
+```
+
+Read the in-file comment about ICMP before publishing — strict
+confinement may block the unprivileged ping socket, in which case you'd
+need `classic` confinement (which requires manual review from Canonical
+when publishing to the Snap Store).
+
 ## Tech stack
 
 - [Bubble Tea](https://github.com/charmbracelet/bubbletea) — TUI framework

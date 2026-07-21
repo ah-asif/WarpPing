@@ -1,0 +1,46 @@
+name: warpping
+version: git
+summary: Terminal network speed meter and ping tester for Linux
+description: |
+  warpping shows live download/upload throughput and background ping
+  latency, and lets you run an on-demand ping test against any domain
+  or IP address from a terminal dashboard.
+
+base: core24
+confinement: strict
+grade: stable
+
+# NOTE on ICMP: warpping sends pings via an unprivileged ICMP datagram
+# socket, which relies on net.ipv4.ping_group_range permitting the
+# process's group on the host. Under strict snap confinement this may
+# be blocked by the sandbox even when the plugs below are connected. If
+# ping fails inside the snap, you likely need `confinement: classic`
+# instead (which requires manual review when publishing to the Snap
+# Store) or an explicit interface such as network-observe.
+plugs:
+  - network
+  - network-bind
+
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  arm64:
+    build-on: [amd64, arm64]
+    build-for: [arm64]
+
+apps:
+  warpping:
+    command: bin/warpping
+    plugs:
+      - network
+      - network-bind
+
+parts:
+  warpping:
+    plugin: go
+    source: .
+    source-type: local
+    build-snaps:
+      - go/1.22/stable
+    go-buildtags: []
