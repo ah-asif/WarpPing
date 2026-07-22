@@ -2,6 +2,6 @@
     "uuid": "warp-speed@ah-asif.github.io",
     "name": "Warp Speed",
     "description": "Shows live download/upload speed and ping in the top bar. Click the indicator to test ping against any domain or IP address.",
-    "shell-version": [ "45", "46", "47", "48" ],
+    "shell-version": [ "45", "46", "47", "48" , "49" , "50" ],
     "url": "https://github.com/ah-asif/warp-speed"
 }
