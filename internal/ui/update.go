@@ -1,4 +1,4 @@
-// Package ui implements warpping's terminal dashboard using Bubble Tea.
+// Package ui implements warp-speed's terminal dashboard using Bubble Tea.
 package ui
 
 import (
@@ -7,11 +7,11 @@ import (
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 
-	"warpping/internal/config"
-	"warpping/internal/network"
+	"warp-speed/internal/config"
+	"warp-speed/internal/network"
 )
 
-// Model is warpping's Bubble Tea application state.
+// Model is warp-speed's Bubble Tea application state.
 type Model struct {
 	cfg   config.Config
 	iface string

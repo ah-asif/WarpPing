@@ -57,7 +57,7 @@ func Ping(target string, count int, timeout time.Duration) PingResult {
 			"could not open an ICMP socket (%v).\n"+
 				"On Linux, enable unprivileged ping with:\n"+
 				`  sudo sysctl -w net.ipv4.ping_group_range="0 2147483647"`+"\n"+
-				"or run warpping with sudo / grant it CAP_NET_RAW", err)
+				"or run warp-speed with sudo / grant it CAP_NET_RAW", err)
 		return res
 	}
 	defer conn.Close()
@@ -74,7 +74,7 @@ func Ping(target string, count int, timeout time.Duration) PingResult {
 			Body: &icmp.Echo{
 				ID:   pid,
 				Seq:  seq,
-				Data: []byte("warpping-probe"),
+				Data: []byte("warp-speed-probe"),
 			},
 		}
 		wb, err := msg.Marshal(nil)

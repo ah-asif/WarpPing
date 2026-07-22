@@ -50,7 +50,7 @@ var (
 func (m Model) View() string {
 	var b strings.Builder
 
-	b.WriteString(titleStyle.Render("warpping — Linux network speed & ping monitor"))
+	b.WriteString(titleStyle.Render("warp-speed — Linux network speed & ping monitor"))
 	b.WriteString("\n\n")
 
 	if m.fatalErr != nil {

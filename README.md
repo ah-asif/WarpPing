@@ -1,8 +1,8 @@
-# warpping
+# warp-speed
 
 A terminal network speed meter and ping tester for Linux, written in Go.
 
-`warpping` shows your live download/upload throughput and a background ping
+`warp-speed` shows your live download/upload throughput and a background ping
 latency reading, and lets you run an on-demand ping test against **any**
 domain or IP address without leaving the dashboard — just type it and press
 Enter.
@@ -44,7 +44,7 @@ Type a domain or IP and press Enter to test its ping · Esc / Ctrl+C to quit
 
 ### Unprivileged ping
 
-`warpping` uses an unprivileged ICMP datagram socket, which works without
+`warp-speed` uses an unprivileged ICMP datagram socket, which works without
 root on most modern distributions out of the box. If pings fail with a
 permission error, enable it with:
 
@@ -52,10 +52,10 @@ permission error, enable it with:
 sudo sysctl -w net.ipv4.ping_group_range="0 2147483647"
 ```
 
-or run `warpping` with `sudo` / grant it `CAP_NET_RAW`:
+or run `warp-speed` with `sudo` / grant it `CAP_NET_RAW`:
 
 ```bash
-sudo setcap cap_net_raw+ep ./bin/warpping
+sudo setcap cap_net_raw+ep ./bin/warp-speed
 ```
 
 ## Quick install (prebuilt binary)
@@ -64,13 +64,13 @@ Once you've published a release on GitHub (see the Makefile/CI setup below),
 Linux users can install the latest binary with:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/warpping/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ah-asif/warp-speed/main/install.sh | bash
 ```
 
 ## Build & run
 
 ```bash
-make build      # -> ./bin/warpping
+make build      # -> ./bin/warp-speed
 make run        # build and run with defaults
 make install    # copy to /usr/local/bin (may need sudo)
 ```
@@ -78,14 +78,14 @@ make install    # copy to /usr/local/bin (may need sudo)
 Or directly with `go build`:
 
 ```bash
-go build -o warpping ./cmd/warpping
-./warpping
+go build -o warp-speed ./cmd/warp-speed
+./warp-speed
 ```
 
 ## Usage
 
 ```bash
-./warpping [flags]
+./warp-speed [flags]
 
 Flags:
   -iface string      network interface to monitor (default: auto-detect)
@@ -98,7 +98,7 @@ Flags:
 Example:
 
 ```bash
-./warpping -iface wlan0 -host 1.1.1.1 -interval 500ms
+./warp-speed -iface wlan0 -host 1.1.1.1 -interval 500ms
 ```
 
 While it's running, type any domain or IP address and press Enter to test
@@ -107,8 +107,8 @@ its ping. Press `Esc` or `Ctrl+C` to quit.
 ## Project layout
 
 ```
-warpping/
-├── cmd/warpping/main.go        # Application entry point
+warp-speed/
+├── cmd/warp-speed/main.go        # Application entry point
 ├── internal/
 │   ├── config/config.go        # App configuration & flag parsing
 │   ├── network/
@@ -145,8 +145,8 @@ Just update the placeholder `homepage` and `maintainer` fields first.
 Users then install with, e.g.:
 
 ```bash
-curl -LO https://github.com/YOU/warpping/releases/download/v1.0.0/warpping_1.0.0_linux_amd64.deb
-sudo dpkg -i warpping_1.0.0_linux_amd64.deb
+curl -LO https://github.com/YOU/warp-speed/releases/download/v1.0.0/warp-speed_1.0.0_linux_amd64.deb
+sudo dpkg -i warp-speed_1.0.0_linux_amd64.deb
 ```
 
 ### Homebrew tap
@@ -163,7 +163,7 @@ Users then run:
 
 ```bash
 brew tap YOU/tap
-brew install --cask warpping
+brew install --cask warp-speed
 ```
 
 ### AUR (Arch Linux)
@@ -181,7 +181,7 @@ plugin and `core24` base. Build and test locally with:
 ```bash
 cd packaging/snap
 snapcraft
-sudo snap install --dangerous ./warpping_*.snap
+sudo snap install --dangerous ./warp-speed_*.snap
 ```
 
 Read the in-file comment about ICMP before publishing — strict

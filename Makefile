@@ -1,17 +1,17 @@
-BINARY     := warpping
-CMD_DIR    := ./cmd/warpping
+BINARY     := warp-speed
+CMD_DIR    := ./cmd/warp-speed
 INSTALL_DIR := /usr/local/bin
 
 .PHONY: all build run install uninstall clean vet fmt tidy allow-unprivileged-ping
 
 all: build
 
-## build: compile the binary into ./bin/warpping
+## build: compile the binary into ./bin/warp-speed
 build:
 	mkdir -p bin
 	go build -o bin/$(BINARY) $(CMD_DIR)
 
-## run: build and run warpping with default settings
+## run: build and run warp-speed with default settings
 run: build
 	./bin/$(BINARY)
 
@@ -39,6 +39,6 @@ fmt:
 tidy:
 	go mod tidy
 
-## allow-unprivileged-ping: let warpping send ICMP pings without root/sudo
+## allow-unprivileged-ping: let warp-speed send ICMP pings without root/sudo
 allow-unprivileged-ping:
 	sudo sysctl -w net.ipv4.ping_group_range="0 2147483647"

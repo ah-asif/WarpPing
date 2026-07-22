@@ -1,6 +1,6 @@
-# warpping — GNOME Shell extension
+# warp-speed — GNOME Shell extension
 
-A top-bar indicator version of warpping: shows live download/upload speed
+A top-bar indicator version of warp-speed: shows live download/upload speed
 and ping right in the GNOME top panel, with a dropdown to test ping
 against any domain or IP address.
 
@@ -11,15 +11,15 @@ bindings), not Go, since they run inside the Shell's own process.
 ## Before you publish: rename the UUID
 
 The extension's directory name and `metadata.json` both currently use the
-placeholder UUID `warpping@YOUR_GITHUB_USERNAME.github.io`. GNOME Shell
+placeholder UUID `warp-speed@ah-asif.github.io`. GNOME Shell
 extension UUIDs are conventionally styled like an email address / reverse
 domain and must be **globally unique** on extensions.gnome.org. Replace
-`YOUR_GITHUB_USERNAME` in **both places** with something identifying you:
+`ah-asif` in **both places** with something identifying you:
 
 ```bash
 cd gnome-extension
-OLD="warpping@YOUR_GITHUB_USERNAME.github.io"
-NEW="warpping@yourusername.github.io"   # <-- pick your own
+OLD="warp-speed@ah-asif.github.io"
+NEW="warp-speed@yourusername.github.io"   # <-- pick your own
 mv "$OLD" "$NEW"
 sed -i "s/$OLD/$NEW/" "$NEW/metadata.json"
 ```
@@ -29,7 +29,7 @@ Also update the `url` field in `metadata.json` to point at your repo.
 ## 1. Install it locally to test
 
 ```bash
-cp -r gnome-extension/warpping@yourusername.github.io \
+cp -r gnome-extension/warp-speed@yourusername.github.io \
       ~/.local/share/gnome-shell/extensions/
 ```
 
@@ -37,7 +37,7 @@ cp -r gnome-extension/warpping@yourusername.github.io \
 Shell, then:
 
 ```bash
-gnome-extensions enable warpping@yourusername.github.io
+gnome-extensions enable warp-speed@yourusername.github.io
 ```
 
 **On Wayland:** you can't restart the Shell in-place, so log out and log
@@ -58,11 +58,11 @@ GNOME ships a tool that validates `metadata.json` and zips the extension
 correctly:
 
 ```bash
-cd ~/.local/share/gnome-shell/extensions/warpping@yourusername.github.io
+cd ~/.local/share/gnome-shell/extensions/warp-speed@yourusername.github.io
 gnome-extensions pack --force
 ```
 
-This produces `warpping@yourusername.github.io.shell-extension.zip` in
+This produces `warp-speed@yourusername.github.io.shell-extension.zip` in
 the current directory — this is the exact file extensions.gnome.org
 expects.
 
@@ -91,11 +91,11 @@ While waiting on review — or if you don't want to go through it at all —
 people can install straight from GitHub:
 
 ```bash
-git clone https://github.com/yourusername/warpping.git
-cp -r warpping/gnome-extension/warpping@yourusername.github.io \
+git clone https://github.com/yourusername/warp-speed.git
+cp -r warp-speed/gnome-extension/warp-speed@yourusername.github.io \
       ~/.local/share/gnome-shell/extensions/
 # then restart the Shell (Alt+F2, r, Enter on X11; log out/in on Wayland)
-gnome-extensions enable warpping@yourusername.github.io
+gnome-extensions enable warp-speed@yourusername.github.io
 ```
 
 ## 5. Shipping updates

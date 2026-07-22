@@ -1,5 +1,5 @@
 // Package network provides bandwidth measurement, ICMP ping, and host
-// validation used by warpping.
+// validation used by warp-speed.
 package network
 
 import (

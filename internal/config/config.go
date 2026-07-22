@@ -1,4 +1,4 @@
-// Package config holds warpping's runtime configuration: which network
+// Package config holds warp-speed's runtime configuration: which network
 // interface to monitor, which host to continuously ping in the background,
 // and how often to refresh the dashboard.
 package config
@@ -29,7 +29,7 @@ type Config struct {
 	TestCount int
 }
 
-// Default returns warpping's built-in default configuration.
+// Default returns warp-speed's built-in default configuration.
 func Default() Config {
 	return Config{
 		Interface:       "",

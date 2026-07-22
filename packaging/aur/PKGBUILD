@@ -1,46 +1,46 @@
 # Maintainer: Your Name <you@example.com>
 #
-# This PKGBUILD builds warpping from the tagged GitHub source release.
+# This PKGBUILD builds warp-speed from the tagged GitHub source release.
 # It's the standard format required to publish a package on the AUR
 # (Arch User Repository).
 #
 # To publish:
 #   1. Create an AUR account: https://aur.archlinux.org/register
 #   2. Add your SSH public key to your AUR account.
-#   3. git clone ssh://aur@aur.archlinux.org/warpping.git aur-warpping
-#   4. Copy this file (renamed to PKGBUILD) into aur-warpping/, update
+#   3. git clone ssh://aur@aur.archlinux.org/warp-speed.git aur-warp-speed
+#   4. Copy this file (renamed to PKGBUILD) into aur-warp-speed/, update
 #      pkgver/sha256sums for each release, then:
-#        cd aur-warpping
+#        cd aur-warp-speed
 #        makepkg --printsrcinfo > .SRCINFO
 #        git add PKGBUILD .SRCINFO
-#        git commit -m "warpping <version>"
+#        git commit -m "warp-speed <version>"
 #        git push
 #
 # After that, Arch users install it with:
-#   yay -S warpping        # or any other AUR helper
+#   yay -S warp-speed        # or any other AUR helper
 #   # or manually:
-#   git clone https://aur.archlinux.org/warpping.git && cd warpping && makepkg -si
+#   git clone https://aur.archlinux.org/warp-speed.git && cd warp-speed && makepkg -si
 
-pkgname=warpping
+pkgname=warp-speed
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal network speed meter and ping tester for Linux"
 arch=('x86_64' 'aarch64')
-url="https://github.com/YOUR_GITHUB_USERNAME/warpping"
+url="https://github.com/ah-asif/warp-speed"
 license=('MIT')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/YOUR_GITHUB_USERNAME/warpping/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ah-asif/warp-speed/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP') # replace with `makepkg -g` output before publishing
 
 build() {
   cd "$pkgname-$pkgver"
   export CGO_ENABLED=0
-  go build -ldflags "-s -w -X main.version=$pkgver" -o warpping ./cmd/warpping
+  go build -ldflags "-s -w -X main.version=$pkgver" -o warp-speed ./cmd/warp-speed
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 warpping "$pkgdir/usr/bin/warpping"
+  install -Dm755 warp-speed "$pkgdir/usr/bin/warp-speed"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

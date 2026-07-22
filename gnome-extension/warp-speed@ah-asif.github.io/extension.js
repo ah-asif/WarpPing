@@ -185,7 +185,7 @@ class PingEntryItem extends PopupMenu.PopupBaseMenuItem {
             hint_text: 'Enter domain or IP address',
             can_focus: true,
             x_expand: true,
-            style_class: 'warpping-ping-entry',
+            style_class: 'warp-speed-ping-entry',
         });
 
         this._entry.clutter_text.connect('key-press-event', (actor, event) => {
@@ -202,7 +202,7 @@ class PingEntryItem extends PopupMenu.PopupBaseMenuItem {
     }
 });
 
-export default class WarppingExtension extends Extension {
+export default class WarpSpeedExtension extends Extension {
     enable() {
         this._cancellable = new Gio.Cancellable();
         this._iface = defaultInterface() || 'eth0';
@@ -217,9 +217,9 @@ export default class WarppingExtension extends Extension {
         this._indicator = new PanelMenu.Button(0.0, this.metadata.name, false);
 
         this._label = new St.Label({
-            text: 'warpping …',
+            text: 'warp-speed …',
             y_align: Clutter.ActorAlign.CENTER,
-            style_class: 'warpping-panel-label',
+            style_class: 'warp-speed-panel-label',
         });
         this._indicator.add_child(this._label);
 

@@ -1,4 +1,4 @@
-module warpping
+module warp-speed
 
 go 1.22.2
 
